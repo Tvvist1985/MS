@@ -16,7 +16,7 @@ namespace PetAppGateWay.Controllers
         public GeneralInformationController(IDistributedCache distributedCache) => this.distributedCache = distributedCache;
 
         [HttpGet]
-        [Route("[action]")] 
+        [Route("[action]")]  
         public async Task<IActionResult> GetCurrencyRate() => Ok(distributedCache.GetString(nameof(RadisKeys.Currency)));       
     }
 }
