@@ -1,0 +1,36 @@
+﻿@inherits LayoutComponentBase
+@inject MainModel MainVM
+
+<style>
+    .wrapper > * {
+        color:crimson;    
+        
+    }   
+    .wrapper_link{
+        text-align: center;
+        background-color: burlywood;       
+    }
+</style>
+
+<main>
+    <div class="wrapper wrapper_link">
+        <NavLink href="/">Home.</NavLink>
+        <NavLink href="/Account">Account.</NavLink> --                   
+        <span>USD:@MainVM.currencies.USD</span>
+        <span>EUR:@MainVM.currencies.EUR</span>        
+    </div>
+
+    <article>@Body</article>
+</main>
+
+
+@code
+{
+    protected async override Task OnInitializedAsync() //Русский перевод не обновит страницу
+    {
+        Task[] tasks = new Task[] { MainVM.GetCurrentUser(), MainVM.GetBankAccount(), MainVM.GetCurrencyRateAsync() };       
+        await Task.WhenAll(tasks);
+
+        await InvokeAsync(StateHasChanged);
+    }         
+}

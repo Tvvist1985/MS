@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\Micro\\PET\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D86DDE3E-BE0E-4727-8A9A-3453E184E0E6}|PET.csproj|c:\\users\\user\\desktop\\micro\\pet\\services\\httpclient\\httpclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D86DDE3E-BE0E-4727-8A9A-3453E184E0E6}|PET.csproj|solutionrelative:services\\httpclient\\httpclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1183DA75-3F78-4307-A945-6D34380E5484}|..\\PetAppGateWay\\PetAppGateWay.csproj|c:\\users\\user\\desktop\\micro\\petappgateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1183DA75-3F78-4307-A945-6D34380E5484}|..\\PetAppGateWay\\PetAppGateWay.csproj|c:\\users\\user\\desktop\\micro\\petappgateway\\services\\workers\\currencyworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Micro\\PetAppGateWay\\Program.cs",
+              "RelativeDocumentMoniker": "..\\PetAppGateWay\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Micro\\PetAppGateWay\\Program.cs",
+              "RelativeToolTip": "..\\PetAppGateWay\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T09:19:18.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CurrencyWorker.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Micro\\PetAppGateWay\\Services\\Workers\\CurrencyWorker.cs",
+              "RelativeDocumentMoniker": "..\\PetAppGateWay\\Services\\Workers\\CurrencyWorker.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Micro\\PetAppGateWay\\Services\\Workers\\CurrencyWorker.cs",
+              "RelativeToolTip": "..\\PetAppGateWay\\Services\\Workers\\CurrencyWorker.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T09:17:49.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HttpClient.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Micro\\PET\\Services\\HttpClient\\HttpClient.cs",
+              "RelativeDocumentMoniker": "Services\\HttpClient\\HttpClient.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Micro\\PET\\Services\\HttpClient\\HttpClient.cs",
+              "RelativeToolTip": "Services\\HttpClient\\HttpClient.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:54:16.898Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

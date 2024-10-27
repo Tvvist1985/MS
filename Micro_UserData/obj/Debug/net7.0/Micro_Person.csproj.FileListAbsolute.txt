@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\Micro\Micro_UserData\bin\Debug\net7.0\Micro_Person.deps.json
+C:\Users\User\Desktop\Micro\Micro_UserData\bin\Debug\net7.0\Micro_Person.dll
+C:\Users\User\Desktop\Micro\Micro_UserData\bin\Debug\net7.0\Micro_Person.pdb
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.AssemblyInfo.cs
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.dll
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\refint\Micro_Person.dll
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\Micro_Person.pdb
+C:\Users\User\Desktop\Micro\Micro_UserData\obj\Debug\net7.0\ref\Micro_Person.dll

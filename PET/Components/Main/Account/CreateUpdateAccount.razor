@@ -1,0 +1,271 @@
+﻿@inject NavigationManager NavMen
+@inject MainModel UserVM
+
+@if (res?.CodeFroeEmail is not null)
+{
+    <div style=" display: flex; justify-content: center;align-items: center; position:absolute;top: 20%; left: 40%; width: 20%; height: 50vh; background-color :aquamarine;">
+        <div>
+            <label>
+                Input code from email.
+                <div>
+                    <InputNumber style="text-align: center;" min="1" max="4" @bind-Value="codeForEqual"></InputNumber>
+                </div>
+                <br />
+
+                <div>
+                    <button style="width :100%; height:5%; background-color:crimson" @onclick="AddAccountOrUpdate">Send</button>
+                </div>
+            </label>
+            @if (_codeError)
+            {
+                <div>@Code</div>
+            }
+        </div>
+    </div>
+}
+
+<div>
+    <EditForm Model="@UserVM.AccountVM" OnValidSubmit="GetCodeFromEmail">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+
+        @if (_server500OrSuccess)
+        {
+            <div>@Server500</div>
+        }
+        else if (_success)
+        {
+            <div>@Success</div>
+        }
+
+        <label>
+            Firstname
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.FirstName"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.FirstName"></ValidationMessage>
+        </div>
+
+        <label>
+            Surname
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.SurName"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.SurName"></ValidationMessage>
+        </div>
+
+        <label>
+            Gender
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.Gender"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.Gender"></ValidationMessage>
+        </div>
+
+        <label>
+            Email
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.EmailAdress"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.EmailAdress"></ValidationMessage>
+            @if (_emailError)
+            {
+                <span>@EmailError</span>
+            }
+        </div>
+
+        <label>
+            Telephone
+            <div>
+                <InputNumber @bind-Value="UserVM.AccountVM.Telephone"></InputNumber>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.Telephone"></ValidationMessage>
+            @if (_numberError)
+            {
+                <span>@NumberError</span>
+            }
+        </div>
+
+        <label>
+            Age
+            <div>
+                <InputDate style="width:12%" @bind-Value="UserVM.AccountVM.DateOfBirth"></InputDate>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.DateOfBirth"></ValidationMessage>
+        </div>
+
+        <label>
+            Password
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.Password"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.Password"></ValidationMessage>
+        </div>
+
+        <label>
+            Confirm password
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.ConfirmPassword"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.ConfirmPassword"></ValidationMessage>
+        </div>
+
+        <label>
+            Country
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.Country"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.Country"></ValidationMessage>
+        </div>
+
+        <label>
+            City
+            <div>
+                <InputText @bind-Value="UserVM.AccountVM.City"></InputText>
+            </div>
+        </label>
+        <div>
+            <ValidationMessage For="() => UserVM.AccountVM.City"></ValidationMessage>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </EditForm>
+
+</div>
+
+@code {    
+    private UserDTO _forEqual;
+    private string EmailError => "The mail is already being used in another account.";
+    private string NumberError => "The phone number is already in use.";
+    private string Server500 => "Error try again later";
+    private string Success => "Success";
+    private string Code => "Incorrect code.";
+
+    private bool _emailError;
+    private bool _numberError;
+    private bool _server500OrSuccess;
+    private bool _codeError;
+    private bool _success;
+
+    private short? codeForEqual;
+
+    private ResponseMessages res;
+
+    protected override void OnInitialized()
+    {
+        if (UserVM.AccountVM.Id != Guid.Empty)
+            _forEqual = new UserDTO(UserVM.AccountVM);
+    }
+
+    private async Task GetCodeFromEmail()
+    {
+        if (!EqualVM())
+        {
+            res = await UserVM.GetCodeFroEmail();
+            SetMessages();
+        }
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task AddAccountOrUpdate()
+    {
+        if (res.CodeFroeEmail.Equals(codeForEqual.ToString()))
+        {
+            res.CodeFroeEmail = null;
+
+            EqualEmailAndNumber();
+
+            res = await UserVM.CreateOrUpdateAccount();
+            if (SetMessages())
+                CreateAccount();
+        }
+        else
+        {
+            _codeError = true;
+        }
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void CreateAccount()
+    {
+        if (res.Id is not null)
+        {
+            Task.Run(() => { UserVM.AccountVM.Id = new Guid(res.Id); });
+
+            Console.WriteLine(res.JWT);            
+            NavMen.NavigateTo("/");
+        }
+    }
+
+    private bool SetMessages()
+    {
+        if (res is null)
+        {
+            _server500OrSuccess = true;
+            _emailError = false;
+            _numberError = false;
+            _success = false;
+            _codeError = false;
+
+            return false;
+        }
+        else if (res.Success)
+        {
+            if (UserVM.AccountVM.EmailAdress is null)
+                UserVM.AccountVM.EmailAdress = _forEqual.EmailAdress;
+
+            if (UserVM.AccountVM.Telephone is null)
+                UserVM.AccountVM.Telephone = _forEqual.Telephone;
+
+            _forEqual = new UserDTO(UserVM.AccountVM);
+        }
+
+        _server500OrSuccess = false;
+        _success = res.Success;
+        _emailError = res.EmailError;
+        _numberError = res.NumberError;
+        _codeError = false;
+
+        return true;
+    }
+
+    private bool EqualVM()
+    {
+        if (UserVM.AccountVM.Equals(_forEqual))
+        {
+            _success = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    private void EqualEmailAndNumber()
+    {
+        if (UserVM.AccountVM.EmailAdress.Equals(_forEqual?.EmailAdress))
+            UserVM.AccountVM.EmailAdress = null;
+
+        if (UserVM.AccountVM.Telephone.Equals(_forEqual?.Telephone))
+            UserVM.AccountVM.Telephone = null;
+    }
+}

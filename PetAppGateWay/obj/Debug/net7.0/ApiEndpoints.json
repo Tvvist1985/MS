@@ -1,0 +1,96 @@
+[
+  {
+    "ContainingType": "PetAppGateWay.Controllers.AccountController",
+    "Method": "AddOrUpdateAccount",
+    "RelativePath": "Account/AddOrUpdateAccount",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "Micro_Account.Commands.AddOrUpdateCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PetAppGateWay.Controllers.AccountController",
+    "Method": "GetAccount",
+    "RelativePath": "Account/GetAccount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PetAppGateWay.Controllers.AccountController",
+    "Method": "GetCodeFromEmail",
+    "RelativePath": "Account/GetCodeFromEmail/{email}/{number}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PetAppGateWay.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "Account/Login/{login}/{password}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PetAppGateWay.Controllers.BankAccountController",
+    "Method": "GetBankAccount",
+    "RelativePath": "BankAccount/GetBankAccount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PetAppGateWay.Controllers.BankAccountController",
+    "Method": "ToUpAccount",
+    "RelativePath": "BankAccount/ToUpAccount/{sum}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sum",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,58 @@
+﻿@inject MainModel MainVM
+
+<style>
+    .button{
+        width: 10%;
+        height:10vh;
+        background-color: red;
+        position: absolute;
+        top: 30%;
+        left: 45%;
+    }
+
+    .buttonSend {
+        width: 5%;
+        height: 3vh;
+        background-color:blue;        
+    }
+</style>
+
+@if(_getBankBTN)
+{
+    <button class="button" @onclick="GetBankAccount"> Get Account</button>
+}
+else
+{
+   <div>Number Account.</div>
+   <div>@MainVM.BankAcc.AccountNumber</div>
+   <hr />   
+
+   <div>Balanse.</div>
+   <div>@MainVM.BankAcc.Balance</div>
+    <hr />
+
+    <div>Top up your account.</div>
+    <InputNumber @bind-Value="_sum"></InputNumber>
+    <button class="buttonSend" @onclick="SendSum">Send</button>
+    <hr />
+}
+
+@code {
+    private bool _getBankBTN = false;
+    private int _sum;    
+    protected async override Task OnInitializedAsync()
+    {
+        if (MainVM.BankAcc is null)
+            _getBankBTN = true;
+    }
+
+    private async Task GetBankAccount()
+    {
+        await MainVM.GetBankAccount();
+
+        if (MainVM.BankAcc is not null)
+            _getBankBTN = false;
+    }
+
+    private async Task SendSum() => await MainVM.TopUpAccount(_sum);               
+}
